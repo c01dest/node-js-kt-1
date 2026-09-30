@@ -1,0 +1,55 @@
+### 1. GET /plants — Получение всех растений
+GET http://localhost:3000/plants
+
+### 2. GET /plants?type=Суккуленты — Фильтрация по полю
+GET http://localhost:3000/plants?type=Суккуленты
+
+### 3. GET /plants/1 — Получение конкретного растения
+GET http://localhost:3000/plants/1
+
+### 4. GET /plants/999 — Ошибка 404 (Не найдено)
+GET http://localhost:3000/plants/999
+
+### 5. POST /plants — Успешное создание (авторасчет nextWatering)
+POST http://localhost:3000/plants
+Content-Type: application/json
+
+{
+  "name": "Кактус Мамиллярия",
+  "type": "Суккуленты",
+  "wateringIntervalDays": 10
+}
+
+### 6. POST /plants — Ошибка 400 (Невалидные данные)
+POST http://localhost:3000/plants
+Content-Type: application/json
+
+{
+  "name": "",
+  "type": "Суккуленты",
+  "wateringIntervalDays": -5
+}
+
+### 7. PUT /plants/1 — Полное обновление
+PUT http://localhost:3000/plants/1
+Content-Type: application/json
+
+{
+  "name": "Монстера Облика",
+  "type": "Декоративно-лиственные",
+  "wateringIntervalDays": 3
+}
+
+### 8. PATCH /plants/1 — Частичное обновление интервала полива
+PATCH http://localhost:3000/plants/1
+Content-Type: application/json
+
+{
+  "wateringIntervalDays": 9
+}
+
+### 9. DELETE /plants/1 — Успешное удаление (Возвращает 204)
+DELETE http://localhost:3000/plants/1
+
+### 10. GET /non-existent-route — Тест 404 для неизвестного URL
+GET http://localhost:3000/unknown
